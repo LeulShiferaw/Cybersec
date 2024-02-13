@@ -1,0 +1,1 @@
+After running the program for 6 minutes we got the result. We had to change the address to something that was already present for it to work though. The initial default address from Task2 ran for 20 minutes and didn't work. Then we put in one of the address when it was running and ran brute-force.sh and it worked.

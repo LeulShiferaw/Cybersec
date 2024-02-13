@@ -1,0 +1,1 @@
+We added to new compilations in Makefile. They are for a32_noexec and a64_noexec. They are compiled to be non-executable stack. Running them leads to "Segmentation Fault"

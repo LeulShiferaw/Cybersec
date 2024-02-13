@@ -1,0 +1,4 @@
+First set the frame pointer and buffer to the one from the server
+in the exploit.py file. Then generate the badfile.
+Now, run "cat badfile | nc 10.9.0.5 9090"
+You should get the list of the root folder

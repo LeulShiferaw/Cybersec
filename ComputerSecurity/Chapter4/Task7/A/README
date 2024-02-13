@@ -1,0 +1,7 @@
+- exploit.py generate badfile for stack-Task9.py (this one is same as stack-L1, but without StackGuard)
+
+- exploit_L1.py generates badfile for stack-L1.py
+
+- ./stack-L1.py < badfile runs the shellcode
+
+- ./stack-Task9.py < badfile detects stack smashing
