@@ -1,0 +1,4 @@
+- Task3 is pretty simple you just find the addresses and input them.
+- Task3 has a variant (exploit_without.py) for skipping the graceful degradation of exit at the end. This is also simple.
+- Task4 was hard. It didn't involve chaining many function though. You call execv once and return to exit. The arguments were bash_addr and input + OFFSET. input+OFFSET contents of argv in the badfile. input is the base of the address read in the main function.
+- Task5 was an easy extension to Task4. Just add addr of foo 10 times before calling execv

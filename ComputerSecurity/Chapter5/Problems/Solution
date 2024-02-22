@@ -1,0 +1,8 @@
+S5.1. Heap overflow
+S5.2. No because the ebp will be restored by in the second functions prologue.
+S5.3. X+4 = execve's address. X+8=exit's address. X+12 = arg1 of execve and so on for the rest of the arguments for execve
+S5.4. Use setuid(0) to set the uid to 0. This way the uid and euid are the same.
+S5.5. Disassemble it in gdb and look at the address after the prologue. This is what you use in the input array.
+S5.6. The address for the libc function didn't change. But the values for the buffer and frame pointer do change. Their gaps however don't. Regardless the "/bin/sh" address does change. But we can get this address from inside the program so that doesn't matter as well. All we need are three things: sh_addr, exit_addr, and system_addr. All three can be found after ASLR is set to 2.
+S5.7. No. I verified experimentally, but I don't know why.
+S5.8. You set the first return address to point to A's address and set the prvious FP(which is the ebp) to point to some other area after the arguments of A. Then you set B's address after the new ebp and set the new ebp to point to some area after B's arguments. Then you do the same to C and end with an exit address.

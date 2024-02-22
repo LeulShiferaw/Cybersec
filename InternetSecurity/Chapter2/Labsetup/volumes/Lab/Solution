@@ -1,0 +1,26 @@
+1. Promiscous mode lets a NIC listen to all traffic.
+2. Wifi scanning alone can be used to track the user using its MAC address.
+3. Because the outgoing pipe sends back to the computer. 
+4. They are the same except the dummy can have different IP addresses.
+5. To determine the MAC address of a computer.
+6. Destination = broadcast, soure = 10.8.8.5's MAC.
+7. Source MAC = 10.8.8.5's MAC, Source IP = 10.8.8.5, Target MAC = nothing, Target IP = 10.8.8.8
+8. 10.8.8.1
+9. Yes. I verified experimentally.
+10. No. I verified experimentally.
+11, 12, 13. Already did in experiments and labs.
+14. Yes if it is on the same network.
+15. It might not be true as the outsiders may not be on the same network id.
+16. Poison A's ARP cache with M's MAC correspoing to B's IP and poison B's cache with M's MAC corresponding to A's IP.
+17. 1. They will be dropped.
+    2. It will act as a router and send it from A to B.
+    3. It should turn off and sniff/spoof the packets.
+18. By sniffing otherwise promiscuous mode
+19. Because the data has changed. Therefore the checksums will not match.
+20. Yes, but it is not feasible as the new packet sent will match the IP address and will trigger another packet which will trigger another one and so on. If we use MAC the new MAC address src is M's MAC which is not A or B.
+21. 
+ dst = broadcast, arp1.psrc = B's IP, arp1.hwsrc = M's MAC, arp1.pdst = A
+    's IP, sendp(ether1/arp1)
+
+ dst = broadcast, arp12.psrc = A's IP, arp2.hwsrc = M's MAC, arp1.pdst = B's
+    IP, sendp(ether2/arp2)
