@@ -1,0 +1,19 @@
+1. Using offsets from the ebp (frame pointer)
+2. i = data segment
+   str = stack segment
+   ptr = heap segment
+   buf = stack segment
+   j = stack segment
+   y = bss segment
+3. It should be str above the return address, then 24 segment for buffer below the ebp.
+4. Yes this can stop buffer overflow attacks from overflowing the return address, but allocating this way may make it hard to find the start of the array.
+5. This is false. strcpy mearly copies the buffer into the variable in the function. The variable in the function overwrites its return address not strcpy's return address. 
+6. It is safer, but size might still be less than str's size.
+7. Address Randomization may still be on.
+8. First fill content with NOP. Then do this: content[64:64+4] = ret + 10. 64 is the difference between ret and buffer. ret + 10 should point to a NOP instruction.
+9. Set p->pre to point to an address that contains 0xBBFFAACC, then set p->next to point to an address that contains the address of the start of the malicious code. This way q = p->pre will set q to 0xBBFFAACC (actual return address in stack). Then q->next = p->next will set the value at that return address (q->next is technically the value at q, see the diagram) to be the address of q->next (malicious code).
+10. Set p->pre to point to the address that contains the frame pointer (0xBBFFAACC-4), then set p->next to point to an address that contains the start of the malicious code. Now, q=p->pre will point to the frame pointer. q->next = p->next will set framepointer + 4 (return address b/c it skips the first 4 bytes which is the integer) to be p->next(start of malicious code).
+11. Because the start of the malicious code will be different each time.
+12. It seems to push the string into the stack and use that instead.
+13. Return address + 8 (+4 is the str input)
+14. You can do the usual, but set the first 120 values to be the return address of the malicious code. 120 because the return address is at most in the first 100 values plus some other compiler generated data. By using spraying you can guarantee that the return address will be overflown to the start of the malicious code.
