@@ -1,0 +1,1 @@
+Run ./attack_process in on terminal and bash target_process.sh in another. When it stops printing "No permission"" on the target_process just stop both programs, remove /tmp/XYZ and do it again.

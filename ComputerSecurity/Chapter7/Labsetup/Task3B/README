@@ -1,0 +1,4 @@
+It failed. We get the permission denied. Basically it checks if this world writable folder call tmp has a symlink owner (seed) that is the same as the euid (root) or the owner of tmp (root). Neither are true so it fails. 
+
+Limitations:
+It may not be a world writable folder. It could be a folder that we created ourselves. Also, it must have the sticky bit enabled.

@@ -1,0 +1,1 @@
+Open target_process_slow.sh in one terminal and immediately open attack_process_slow in another in that order. Then it will add passwd_input to /etc/passwd.
