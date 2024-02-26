@@ -1,0 +1,15 @@
+1. Look at s61.c
+2. Format string vulnerability is less restricted because that goes to that specific address and changes the return address. Where as buffer overflow writes to everything from start of buffer. This can trigger stack guard measures.
+3. No.
+4. 3
+5. AABBCDA6AABBCDA8%1$.{first part of malicious address - size of everything printed so far}x%7$hn%1$.{second part - first part}x%8$hn "malicious code" . You can see that we first put the two address of the return address and ret + 2. Then we put the first half of the malicious address into the first address and the second part into the second address. Finally, we have the malicious code. Malicious address = 0xAABBCCDD + 100 (as long as it is in buffer)
+6. I don't think it will print more than a billion as you can see because each half is small. But estimate AABB + CCDD = 90000+ so we should just do one byte at a time.
+7. Do the same thing, but overwrite the first two bytes with something useless.
+8. 
+  1. Assuming we put in 0xAABBCCDF as malicious address we put in AABB in all return address using successive %{index of return address}$%hn then we do the same for the second half. If we want to keep the number of prints to less than 80000, we can do it one byte at a time instead of two bytes at a time.
+  2. Do one byte at a time and do the % signs first. Then add all the addresses at the end and go to them to use them. (This question is not completely answered by me)
+9. If it is in a char array variable then it will go undetected unless the user sets those specific warnings to true.
+10. It can still modify sensitive data on the stack. It doesn't need to run commands.
+11. Yes, return to libc.
+12. We need to overwrite the return address to point to the address of the libc function and also modify the argument address for that function. This should just be ret + 8.
+13. I guess we could use the same technique as ROP. We just call a sequence of sprintf functions and let them address the zero.

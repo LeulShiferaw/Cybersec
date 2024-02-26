@@ -1,0 +1,12 @@
+1. Yes it does.
+2. Yes it does. We can open the root file such as "passwd", then change it back so it passes faccess, then change it back again.
+3. Three. Because the first open, then the second access, then the second open.
+4. No. Because it is atomic.
+5. Not when we can renable it because our code injection for buffer overflow can also renable it.
+6. Yes. You start with the privileged file you want to open, and then switch between fp = ... and stat("...", ...) to a file that can be opened by the real user ID.
+7. I think that this one doesn't have a race condition. The file descriptor points to an open file and doesn't take symlinks into consideration.
+8. The file my be used by more than one process. (This is the best answer I could come up with).
+9. Yes between lines 1 and 2 switch to privileged file, then between 2 and 3 switch back, then between 3 and 11 switch to privileged again.
+10. Line 1: eff_uid = geteuid()
+    Line 3: seteuid(getuid())
+    Line 6: seteuid(eff_uid)
