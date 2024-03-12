@@ -1,0 +1,1 @@
+run task2A.py to generate the badfile for task A and task2B.py to generate the badfile for B. The use "cat badfile | nc 10.9.0.5 9090" to send the value to the server.

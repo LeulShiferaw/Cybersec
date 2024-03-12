@@ -1,0 +1,1 @@
+Start by running "nc -nv -l 9090" on the terminal. Then send the badfile to the server(10.9.0.5) using "cat badfile | nc 10.9.0.5 9090".

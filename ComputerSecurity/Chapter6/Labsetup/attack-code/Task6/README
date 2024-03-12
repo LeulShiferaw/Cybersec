@@ -1,0 +1,2 @@
+gcc -DBUF=100 -z execstack -o test format.c
+The compiler instruction was like above. There were no errors when I made print(msg) -> print("%s", msg). Attacks no longer work.
