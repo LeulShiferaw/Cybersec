@@ -1,0 +1,2 @@
+To compile: gcc cow_attack.c -lpthread -o cow_attack
+Make sure to create the file "/zzz" as mentioned in the book.

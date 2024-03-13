@@ -1,0 +1,2 @@
+To compile cow_attack_passwd: gcc cow_attack_passwd.c -lpthread -o cow_attack_passwd
+

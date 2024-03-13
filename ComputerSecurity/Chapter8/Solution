@@ -1,0 +1,10 @@
+1. It prints "World". I verified with experiment
+2. When you change something in the memory.
+3. a. The memory is duplicated, then process table points to the new memory, and then it is written in that place.
+   b. It redirects back to the file (on the first mapped area) between the process table change and the file is written. The OS doesn't verify permissions anymore.
+   c. We can write to any read-only file using this technique. For example, we can add a root user to /etc/passwd
+4. Yes I believe so. But hasn't been verified with experiment.
+5. No. Because we can't write to the same /proc/.../mem file. They are two different things if it is different processes.
+6. /etc/group and /etc/shadow
+7. No. That is why we do read and write to the /proc/... file.
+8. Because we are opening a read-only file. There are other restrictions for that. That is hy we do read/write on /proc/... file.

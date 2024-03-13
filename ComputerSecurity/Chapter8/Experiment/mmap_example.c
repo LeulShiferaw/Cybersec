@@ -16,7 +16,10 @@ int main() {
   memcpy((void*)content, map, 10);
   printf("read: %s\n", content);
 
-  memcpy(map+5, new_content, strlen(new_content));
+  char *addr = (char *)map;
+  printf("VALUE: %s\n", addr+6);
+
+  //memcpy(map+5, new_content, strlen(new_content));
 
   munmap(map, st.st_size);
   close(f);
