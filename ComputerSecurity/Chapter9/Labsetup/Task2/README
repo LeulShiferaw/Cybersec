@@ -1,0 +1,4 @@
+For Task2.a.2: We ran the code step by step and after rdi = rbx they both point to "/bin/sh"
+For Task2.a.3: We save the address of 'AAAA...' and set it to argv[0] do the same for 'BBBB...' with argv[1]. Now the address of the 'AAA...' shoudl point to argv[]. Also, lines 12 and 14 set argv[0] and argv[1], respectively.
+For Task2.a.4: Line 1 make rdi point to "/bin/sh". Line 2 sets rsi to point to the argv[] array.
+
