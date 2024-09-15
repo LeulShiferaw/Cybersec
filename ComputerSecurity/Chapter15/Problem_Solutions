@@ -1,0 +1,13 @@
+1. Transparent and Non-transparent iframes
+2. 1. B is on top and A is bottom
+   2. example32.com
+   3. attacker's page
+   4. X = 1.0
+      Y = 0.0
+3. Place them on top of eachother, make top invisible and match buttons.
+4. 1. 1, 2
+   2. 1, 3
+5. Normally, the attacker is trying to disable their countermeasures before they are executed.
+   Like sandbox attribute. But with this option the countermeasure happens first.
+6. Depends os the CSP and X-frames-option
+7. No. Because of sandbox attribute.
