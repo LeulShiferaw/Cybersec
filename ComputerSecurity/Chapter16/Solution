@@ -1,0 +1,14 @@
+1. It will be there in the child as well. As long as we export it properly.
+2. It will be passed down as a enviorment variable to the child process. This will be converted to shell variable later on.
+3. foo='() { echo hello; }; /bin/sh"
+4. No because it will not be interpreted as a function and therefore bash will not parse and execute it.
+5. Bash needs to be executed and we need to pass in an environment variable.
+6. Through -A, -e, and -H command arguments in curl. These will be HTTP headers that give the program extra info.
+7. If there is no function then no.
+8. This was an honest mistake that can be overlooked. Never let mixing of code with data.
+9. No because they are not environment variables that get executed by bash.
+10. This is a reverse shell.
+11. /bin/cat < /dev/machine2 > /dev/machine3
+12. Just the regular function will continue because enviornment variables is NULL.
+13. This time it will work because the program passes the environment variable in.
+14. THe CGI calls bash and so does the system funtion. So there is no difference.
